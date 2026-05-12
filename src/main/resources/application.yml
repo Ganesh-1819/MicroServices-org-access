@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: org-access
+  config:
+    import: optional:configserver:http://localhost:8888
+
+app:
+  jwt:
+    secret: change-me-please-change-me-please-32bytes
+    expiration-millis: 3600000
+    issuer: org-access
+  auth:
+    users:
+      - username: admin
+        password: admin123
+        roles:
+          - ROLE_ADMIN
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
